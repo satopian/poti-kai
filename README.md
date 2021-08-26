@@ -17,11 +17,11 @@ Punyu Net
 
 ## サンプル/サポート
 
-スクリプトの保守は完全に[POTI-board改二](https://github.com/sakots/poti-kaini)に移行しました。
+スクリプトの保守は完全に[POTI-board EVO](https://github.com/satopian/poti-kaini)に移行しました。
 新規設置、バージョンアップは、より高速に動作するPOTI-board改二をご利用ください。  
 なお、POTI-board改v1.5x系はphp8以降に対応する予定もございません。
 
-[POTI改公式サイト](https://poti-k.info/) をオープンしました。質問や動作確認にご利用ください。
+[POTI改公式サイト](https://pbbs.sakura.ne.jp/poti/) をオープンしました。質問や動作確認にご利用ください。
 
 ## スキンについて
 
@@ -35,7 +35,7 @@ Punyu Net
 ### [2020/06/28]
 
 - POTI-board改、保守作業およびサポートを終了。
-- 今後は[POTI-board改二](https://github.com/satopian/poti-kaini)へ移行します。
+- 今後は[POTI-board EVO](https://github.com/satopian/poti-kaini)へ移行します。
 
 ### [2020/06/02]
 
