@@ -21,7 +21,7 @@ Punyu Net
 新規設置、バージョンアップは、より高速に動作するPOTI-board改二をご利用ください。  
 なお、POTI-board改v1.5x系はphp8以降に対応する予定もございません。
 
-[POTI改公式サイト](https://pbbs.sakura.ne.jp/poti/) をオープンしました。質問や動作確認にご利用ください。
+[POTI改公式サイト](https://paintbbs.sakura.ne.jp/poti/) をオープンしました。質問や動作確認にご利用ください。
 
 ## スキンについて
 
