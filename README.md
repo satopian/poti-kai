@@ -18,15 +18,10 @@ Punyu Net
 ## サンプル/サポート
 
 スクリプトの保守は完全に[POTI-board EVO](https://github.com/satopian/poti-kaini)に移行しました。
-新規設置、バージョンアップは、より高速に動作するPOTI-board改二をご利用ください。  
+新規設置、バージョンアップは、より高速に動作するPOTI-board EVOをご利用ください。  
 なお、POTI-board改v1.5x系はphp8以降に対応する予定もございません。
 
 [POTI改公式サイト](https://paintbbs.sakura.ne.jp/poti/) をオープンしました。質問や動作確認にご利用ください。
-
-## スキンについて
-
-このスクリプトはテンプレート機能に対応しています。[poti-kai-skins](https://github.com/sakots/poti-kai-skins)でテンプレートを用意しておりますのでご参照ください。
-デフォルトでneeスキンを同梱しております。
 
 ---
 
