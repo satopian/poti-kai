@@ -3,8 +3,8 @@
 //$time_start = microtime(true);
 /*
   *
-  * POTI-board改 v1.56.0 lot.210102
-  *   (C)sakots >> https://poti-k.info/
+  *   (C) 2018-2022 POTI改 POTI-board redevelopment team
+  *	  >> https://paintbbs.sakura.ne.jp/poti/
   *
   *----------------------------------------------------------------------------------
   * ORIGINAL SCRIPT
@@ -532,7 +532,7 @@ unset($value);
 			if($line[$j]==="") continue;   //$jが範囲外なら次の行
 			list($no,$now,$name,$email,$sub,$com,$url,
 				 $host,$pwd,$ext,$w,$h,$time,$chk,$ptime,$fcolor) = explode(",", rtrim($line[$j]));
-
+				 
 				 $r_threads = false;
 				 if(ELAPSED_DAYS){//古いスレッドのフォームを閉じる日数が設定されていたら
 				 $ntime = time();
@@ -688,6 +688,8 @@ unset($value);
 			$descriptioncom=strip_tags($com);
 
 			$oyaname=$name;//投稿者名をコピー
+			$url=filter_var($url,FILTER_VALIDATE_URL);
+			$email=filter_var($email, FILTER_VALIDATE_EMAIL);
 
 			// 親記事格納
 			$dat['oya'][$oya] = compact('src','srcname','size','painttime','pch','continue','thumb','imgsrc','w','h','no','sub','name','now','com','descriptioncom','limit','skipres','resub','url','email','id','updatemark','trip','tab','fontcolor');
@@ -783,8 +785,9 @@ unset($value);
 				$com = preg_replace("{<br( *)/>}i","<br>",$com);
 				//独自タグ変換
 				if(USE_POTITAG) $com = potitag($com);
-
-				// レス記事一時格納
+				$url=filter_var($url,FILTER_VALIDATE_URL);
+				$email=filter_var($email, FILTER_VALIDATE_EMAIL);
+					// レス記事一時格納
 				$rres[$oya][] = compact('no','sub','name','now','com','url','email','id','updatemark','trip','fontcolor'
 								,'src','srcname','size','painttime','pch','continue','thumb','imgsrc','w','h');
 
@@ -1136,7 +1139,7 @@ function regist($name,$email,$sub,$com,$url,$pwd,$upfile,$upfile_name,$resto,$pi
 	if(!$com||preg_match("/\A\s*\z/u",$com)) $com="";
 	if(!$sub||preg_match("/\A\s*\z/u",$sub))   $sub="";
 	if(!$email||preg_match("/\A\s*\z|&lt;|</ui",$email)) $email="";
-	if(!$url||!preg_match("/\A *https?:\/\//",$url)||preg_match("/&lt;|</i",$url)) $url="";
+	if(!$url||!filter_var($url,FILTER_VALIDATE_URL)||!preg_match('{\Ahttps?://}', $url)) $url="";
 	if(!$resto&&!$textonly&&!$is_file_dest) error(MSG007,$dest);
 	if(RES_UPLOAD&&$resto&&!$textonly&&!$is_file_dest) error(MSG007,$dest);
 
@@ -1153,6 +1156,7 @@ function regist($name,$email,$sub,$com,$url,$pwd,$upfile,$upfile_name,$resto,$pi
 	if(strlen($name) > MAX_NAME) error(MSG012,$dest);
 	if(strlen($email) > MAX_EMAIL) error(MSG013,$dest);
 	if(strlen($sub) > MAX_SUB) error(MSG014,$dest);
+	if(strlen($url) > 200) error(MSG015);
 	if(strlen($resto) > 10) error(MSG015,$dest);
 
 	//ホスト取得
@@ -1731,6 +1735,7 @@ function admindel($pass){
 		$img_flag = FALSE;
 		list($no,$now,$name,$email,$sub,$com,$url,
 			 $host,$pw,$ext,$w,$h,$time,$chk,) = explode(",",$value);
+		$url=filter_var($url,FILTER_VALIDATE_URL);
 		// フォーマット
 		//$now=preg_replace('#.{2}/(.*)$#','\1',$now);
 		//$now=preg_replace('/\(.*\)/',' ',$now);
@@ -1738,6 +1743,7 @@ function admindel($pass){
 		$name = strip_tags($name);//タグ除去
 		if(strlen($name) > 10) $name = mb_strcut($name,0,9).".";
 		if(strlen($sub) > 10) $sub = mb_strcut($sub,0,9).".";
+		$email=filter_var($email, FILTER_VALIDATE_EMAIL);
 		if($email) $name="<a href=\"mailto:$email\">$name</a>";
 		$com = preg_replace("{<br(( *)|( *)/)>}i"," ",$com);
 		//$com = str_replace("<br />"," ",$com);
@@ -2492,7 +2498,7 @@ function rewrite($no,$name,$email,$sub,$com,$url,$pwd,$admin){
 	if(!$com||preg_match("/\A\s*\z/u",$com)) $com="";
 	if(!$sub||preg_match("/\A\s*\z/u",$sub))   $sub="";
 	if(!$email||preg_match("/\A\s*\z|&lt;|</ui",$email)) $email="";
-	if(!$url||!preg_match("/\A *https?:\/\//",$url)||preg_match("/&lt;|</i",$url)) $url="";
+	if(!$url||!filter_var($url,FILTER_VALIDATE_URL)||!preg_match('{\Ahttps?://}', $url)) $url="";
 
 	//$name=preg_replace("/管理/","\"管理\"",$name);
 	//$name=preg_replace("/削除/","\"削除\"",$name);
@@ -2500,6 +2506,7 @@ function rewrite($no,$name,$email,$sub,$com,$url,$pwd,$admin){
 	if(strlen($com) > MAX_COM) error(MSG011);
 	if(strlen($name) > MAX_NAME) error(MSG012);
 	if(strlen($email) > MAX_EMAIL) error(MSG013);
+	if(strlen($url) > 200) error(MSG015);
 	if(strlen($sub) > MAX_SUB) error(MSG014);
 
 	//ホスト取得
