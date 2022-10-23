@@ -1,7 +1,7 @@
 <?php
 /*
   * POTI-board改 v1.55.8 lot.200511
-  * by sakots >> https://poti-k.info/
+  * by POTI-board redevelopment team >> https://paintbbs.sakura.ne.jp/poti/
   *
   * POTI-board改の設定ファイルです。
   *

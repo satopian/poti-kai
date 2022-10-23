@@ -4,8 +4,8 @@
 **
 ** http://www.punyu.net/php/
 ** by SakaQ
-** https://poti-k.info/
-** by sakots
+** https://paintbbs.sakura.ne.jp/poti/
+** by POTI-board redevelopment team
 **
 ** 2020/05/11 説明追加、POTI改のURL変更。
 ** 2020/01/25 "REMOTE_ADDR"が使えないサーバに対応。

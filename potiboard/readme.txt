@@ -1,7 +1,7 @@
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   POTI-board改
-  by sakots >> https://poti-k.info/
+  by POTI-board redevelopment team >> https://paintbbs.sakura.ne.jp/poti/
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
