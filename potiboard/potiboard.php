@@ -187,8 +187,8 @@ if(!defined('ELAPSED_DAYS')){//config.phpで未定義なら0
 define('USE_MB' , '1');
 
 //バージョン
-define('POTI_VER' , '改 v1.56.0');
-define('POTI_VERLOT' , '改 v1.56.0 lot.210102');
+define('POTI_VER' , '改 v1.60.0');
+define('POTI_VERLOT' , '改 v1.60.0 lot.221023');
 
 //メール通知クラスのファイル名
 define('NOTICEMAIL_FILE' , 'noticemail.inc');
