@@ -1200,7 +1200,7 @@ function regist($name,$email,$sub,$com,$url,$pwd,$upfile,$upfile_name,$resto,$pi
 	}
 
 	// No.とパスと時間とURLフォーマット
-	srand((double)microtime()*1000000);
+	// srand((double)microtime()*1000000);
 	// if($pwd==""){
 	// 	if($pwdc==""){
 	if(!$pwd){//nullでも8桁のパスをセット
