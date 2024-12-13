@@ -38,7 +38,7 @@
 ご質問は、<https://paintbbs.sakura.ne.jp/poti/>までどうぞ。
 */
 //バージョン
-define('POTI_VER' , '改 v1.60.1');
+define('POTI_VER' , '改 v1.60.2');
 define('POTI_VERLOT' , '改 v1.60.1 lot.241213');
 
 if(phpversion()>="5.5.0"){
@@ -404,6 +404,9 @@ function form(&$dat,$resno,$admin="",$tmp=""){
 
 	$dat['form'] = true;
 	if(USE_PAINT){
+
+	$dat['resform'] = $resno ? false : true;
+
 
 //v1.32のMONO WHITEでコメントアウト、対応テンプレートが無いパレット選択用データ(selectタグ用option配列)
 //		$dat['palette'] = '';
@@ -1159,7 +1162,7 @@ function regist($name,$email,$sub,$com,$url,$pwd,$upfile,$upfile_name,$resto,$pi
 	if(strlen($email) > MAX_EMAIL) error(MSG013,$dest);
 	if(strlen($sub) > MAX_SUB) error(MSG014,$dest);
 	if(strlen($url) > 200) error(MSG015);
-	if(strlen($resto) > 10) error(MSG015,$dest);
+	if(strlen((int)$resto) > 10) error(MSG015,$dest);
 
 	//ホスト取得
 	$host = gethostbyaddr($userip);
@@ -1592,7 +1595,7 @@ function treedel($delno){
 
 /* テキスト整形 */
 function CleanStr($str){//コメント以外190603
-	$str = trim($str);//先頭と末尾の空白除去
+	$str = trim((string)$str);//先頭と末尾の空白除去
 	$str = htmlspecialchars($str,ENT_QUOTES,'utf-8');
 	return str_replace(",", "&#44;", $str);//カンマを変換
 }
