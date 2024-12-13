@@ -37,10 +37,14 @@
 「ふたば★ちゃんねる」「ぷにゅねっと」に問い合わせないでください。
 ご質問は、<https://paintbbs.sakura.ne.jp/poti/>までどうぞ。
 */
+//バージョン
+define('POTI_VER' , '改 v1.60.1');
+define('POTI_VERLOT' , '改 v1.60.1 lot.241213');
+
 if(phpversion()>="5.5.0"){
 //スパム無効化関数
 function newstring($string) {
-	$string = htmlspecialchars($string,ENT_QUOTES,'utf-8');
+	$string = htmlspecialchars((string)$string,ENT_QUOTES,'utf-8');
 	$string = str_replace(",","，",$string);
 	return $string;
 }
@@ -186,9 +190,6 @@ if(!defined('ELAPSED_DAYS')){//config.phpで未定義なら0
 //MB関数を使うか？ 使う:1 使わない:0
 define('USE_MB' , '1');
 
-//バージョン
-define('POTI_VER' , '改 v1.60.0');
-define('POTI_VERLOT' , '改 v1.60.0 lot.221023');
 
 //メール通知クラスのファイル名
 define('NOTICEMAIL_FILE' , 'noticemail.inc');
@@ -788,7 +789,8 @@ unset($value);
 				$url=filter_var($url,FILTER_VALIDATE_URL);
 				$email=filter_var($email, FILTER_VALIDATE_EMAIL);
 					// レス記事一時格納
-				$rres[$oya][] = compact('no','sub','name','now','com','url','email','id','updatemark','trip','fontcolor'
+					$dat['resform'] = false;	
+					$rres[$oya][] = compact('no','sub','name','now','com','url','email','id','updatemark','trip','fontcolor'
 								,'src','srcname','size','painttime','pch','continue','thumb','imgsrc','w','h');
 
 				$rresname[] = $name;//投稿者名を配列にいれる
